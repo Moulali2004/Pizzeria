@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark rounded fixed-top" aria-label="Eleventh navbar example">
+  <div class="container-fluid">
+
+    <!-- Brand + Divider + Logo grouped together -->
+    <div class="d-flex align-items-center">
+      <a class="navbar-brand fs-2 text-white mb-0" routerLink="/home">Pizzeria</a>
+      <span class="divider"></span>
+      <img class="image" src="/assets/PizzeriaLogo.png" alt="pizza">
+    </div>
+
+    <!-- Toggler for mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09"
+      aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link fs-4 text-white mx-2" routerLink="/orderpizza">Order Pizza</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link fs-4 text-white mx-2" routerLink="/buildurpizza">Build Ur Pizza</a>
+        </li>
+      </ul>
+
+      <!-- Cart Button -->
+      <a class="btn btn-warning p-2 fs-5 text-white" routerLink="/cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cart-fill"
+          viewBox="0 0 16 16">
+          <path
+            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2" />
+        </svg>
+        Shopping Cart
+      </a>
+    </div>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+
+

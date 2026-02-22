@@ -1,0 +1,26 @@
+<div class="container my-5 py-5">
+    <p class="text-center">Pizzeria now gives you options to build your own pizza. Customize your pizza by choosing ingredients form the list given below.</p>
+    <div class="mt-2 col-md-10 col-sm-12 mx-auto col-lg-8 border">
+        <table class="table table-bordered table-hover">
+            <tbody *ngFor="let data of ingredientData">
+                <tr>
+                    <td><img class="image" [src]="data.image" alt="image"></td>
+                    <td class="align-middle text-center">
+                        <b>{{data.tname}}</b>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <b>₹{{data.price}}.00</b>
+                    </td>
+                    <td class="align-middle text-warning"> 
+                        <input class="form-check-input mx-1" type="checkbox" (change)="onCheckBoxChange($event, data)">
+                        Add
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="mt-1 mx-1">Total Cost : ₹{{totalPrice}}.00</h4>
+        <div class="text-center">
+            <button class="btn btn-dark p-2 mb-1 fs-5 text-warning" (click)="buildUrPizza()">Build Ur Pizza</button>
+        </div>
+    </div>
+    
+</div>
+<router-outlet></router-outlet>

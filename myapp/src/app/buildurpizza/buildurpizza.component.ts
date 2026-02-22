@@ -1,0 +1,46 @@
+import { HttpClient } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { IngredientsService } from '../ingredients.service';
+
+@Component({
+  selector: 'app-buildurpizza',
+  templateUrl: './buildurpizza.component.html',
+  styleUrls: ['./buildurpizza.component.css']
+})
+
+export class BuildurpizzaComponent {
+    ingredientData: any;
+    totalPrice: number = 0;
+
+
+    constructor(private httpClient: HttpClient, private ingredientService: IngredientsService) {
+
+    }
+
+    ngOnInit(): void {
+      this.httpClient.get("http://localhost:3000/ingredients/get-ingredients").subscribe(
+        (response: any) => {
+          this.ingredientData = response;
+        }
+      );
+    }
+
+    onCheckBoxChange(event: any, data: any) {
+      if(event.target.checked) {
+        this.totalPrice += data.price;
+        this.ingredientService.totalIngredientPrice = this.totalPrice;
+        this.ingredientService.ingredients.push(data);
+      } else {
+        this.totalPrice -= data.price;
+        this.ingredientService.totalIngredientPrice = this.totalPrice;
+        const index = this.ingredientService.ingredients.findIndex((ingredient) => ingredient._id === data._id);
+        if(index !== -1) {
+          this.ingredientService.ingredients.splice(index, 1);
+        }
+      }
+    }
+
+    buildUrPizza() {
+      alert("Your Custom Pizza is being prepared! Go to Cart to place the order.");
+    }
+}

@@ -1,0 +1,12 @@
+.divider {
+    display: inline-block;
+    height: 60px;          /* match logo height */
+    border-left: 2px solid white;
+    margin: 0 8px;         /* small spacing */
+}
+
+.image {
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+}
