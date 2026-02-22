@@ -1,11 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { IngredientsService } from '../ingredients.service';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+    selector: 'app-cart',
+    templateUrl: './cart.component.html',
+    styleUrls: ['./cart.component.css'],
+    standalone: false
 })
 export class CartComponent {
   items: any[] = [];
@@ -15,7 +17,11 @@ export class CartComponent {
   customPizzaQuantity: number = 1;
   variableIngredientPrice: number = 0;
 
-  constructor(private httpClient: HttpClient, private ingredientService: IngredientsService) {
+  constructor(
+    private httpClient: HttpClient,
+    private ingredientService: IngredientsService,
+    private router: Router
+  ) {
     this.ingredients = this.ingredientService.ingredients;
   }
 
@@ -78,5 +84,29 @@ export class CartComponent {
     this.ingredientService.totalIngredientPrice = 0;
     this.customPizzaQuantity = 1;
   }
-  
+
+  /**
+   * Called when user clicks Place Order.
+   * Clears server cart, resets local items and custom pizza state,
+   * then navigates to order page.
+   */
+  placeOrder() {
+    // clear backend cart
+    this.httpClient.delete('http://localhost:3000/cart/clear').subscribe(
+      () => {
+        // reset frontend state
+        this.items = [];
+        this.removeCustomPizza();
+        // navigate after clearing is done
+        this.router.navigate(['/orderPage']);
+      },
+      err => {
+        console.error('Failed to clear cart on server', err);
+        // still navigate but user might see stale data until reload
+        this.items = [];
+        this.removeCustomPizza();
+        this.router.navigate(['/orderPage']);
+      }
+    );
+  }
 }

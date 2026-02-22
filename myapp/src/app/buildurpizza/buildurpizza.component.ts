@@ -3,9 +3,10 @@ import { Component } from '@angular/core';
 import { IngredientsService } from '../ingredients.service';
 
 @Component({
-  selector: 'app-buildurpizza',
-  templateUrl: './buildurpizza.component.html',
-  styleUrls: ['./buildurpizza.component.css']
+    selector: 'app-buildurpizza',
+    templateUrl: './buildurpizza.component.html',
+    styleUrls: ['./buildurpizza.component.css'],
+    standalone: false
 })
 
 export class BuildurpizzaComponent {

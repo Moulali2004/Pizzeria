@@ -31,5 +31,11 @@ router.delete('/delete-item/:id', (req, res) => {
     }
 });
 
+// new route to clear all items from the cart
+router.delete('/clear', (req, res) => {
+    cart = [];
+    res.status(200).json({ message: 'Cart cleared' });
+});
+
 
 module.exports = router;

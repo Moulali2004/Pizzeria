@@ -2,9 +2,10 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-orderpizza',
-  templateUrl: './orderpizza.component.html',
-  styleUrls: ['./orderpizza.component.css']
+    selector: 'app-orderpizza',
+    templateUrl: './orderpizza.component.html',
+    styleUrls: ['./orderpizza.component.css'],
+    standalone: false
 })
 export class OrderpizzaComponent {
   pizzas: any;
