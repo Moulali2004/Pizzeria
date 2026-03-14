@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IngredientsService } from '../../services/ingredients.service';
@@ -19,7 +18,6 @@ export class CartComponent {
   variableIngredientPrice: number = 0;
 
   constructor(
-    private httpClient: HttpClient,
     private ingredientService: IngredientsService,
     private router: Router,
     private cartService: CartService

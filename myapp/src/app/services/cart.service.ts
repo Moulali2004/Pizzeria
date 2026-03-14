@@ -19,4 +19,8 @@ export class CartService {
   clearCart() {
     return this.httpClient.delete('http://localhost:3000/cart/clear');
   }
+
+  addPizzaToCart(pizza: any) {
+    return this.httpClient.post("http://localhost:3000/cart/add-to-cart", pizza);
+  }
 }

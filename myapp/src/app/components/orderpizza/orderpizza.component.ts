@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { CartService } from 'src/app/services/cart.service';
+import { OrderpizzaService } from 'src/app/services/orderpizza.service';
 
 @Component({
     selector: 'app-orderpizza',
@@ -10,12 +11,13 @@ import { Component } from '@angular/core';
 export class OrderpizzaComponent {
   pizzas: any;
 
-  constructor(private httpClient: HttpClient) {
-
-  }
+  constructor(
+    private orderPizzaService: OrderpizzaService,
+    private cartService: CartService
+    ) {}
 
   ngOnInit() {
-    this.httpClient.get("http://localhost:3000/pizzas/get-all-pizzas").subscribe(
+    this.orderPizzaService.getAllPizzas().subscribe(
       (response) => {
         this.pizzas = response;
       }
@@ -23,7 +25,7 @@ export class OrderpizzaComponent {
   }
 
   addToCart(pizza: any) {
-    this.httpClient.post("http://localhost:3000/cart/add-to-cart", pizza).subscribe(
+    this.cartService.addPizzaToCart(pizza).subscribe(
       (response: any) => {
         alert(pizza.name + " " + response.message);
       }
