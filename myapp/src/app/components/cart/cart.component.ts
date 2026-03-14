@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { IngredientsService } from '../ingredients.service';
+import { IngredientsService } from '../../services/ingredients.service';
 
 @Component({
     selector: 'app-cart',

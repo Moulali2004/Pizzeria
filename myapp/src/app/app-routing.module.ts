@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { BuildurpizzaComponent } from './buildurpizza/buildurpizza.component';
-import { OrderpizzaComponent } from './orderpizza/orderpizza.component';
-import { CartComponent } from './cart/cart.component';
-import { OrderpageComponent } from './orderpage/orderpage.component';
+import { HomeComponent } from './components/home/home.component';
+import { BuildurpizzaComponent } from './components/buildurpizza/buildurpizza.component';
+import { OrderpizzaComponent } from './components/orderpizza/orderpizza.component';
+import { CartComponent } from './components/cart/cart.component';
+import { OrderpageComponent } from './components/orderpage/orderpage.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},

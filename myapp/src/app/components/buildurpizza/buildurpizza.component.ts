@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { IngredientsService } from '../ingredients.service';
+import { IngredientsService } from 'src/app/services/ingredients.service';
 
 @Component({
     selector: 'app-buildurpizza',
