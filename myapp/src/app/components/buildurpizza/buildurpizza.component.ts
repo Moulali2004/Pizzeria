@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { IngredientsService } from 'src/app/services/ingredients.service';
 
@@ -14,12 +13,12 @@ export class BuildurpizzaComponent {
     totalPrice: number = 0;
 
 
-    constructor(private httpClient: HttpClient, private ingredientService: IngredientsService) {
+    constructor(private ingredientService: IngredientsService) {
 
     }
 
     ngOnInit(): void {
-      this.httpClient.get("http://localhost:3000/ingredients/get-ingredients").subscribe(
+      this.ingredientService.getIngredients().subscribe(
         (response: any) => {
           this.ingredientData = response;
         }
