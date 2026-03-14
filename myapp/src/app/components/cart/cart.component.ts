@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { IngredientsService } from '../../services/ingredients.service';
+import { CartService } from 'src/app/services/cart.service';
 
 @Component({
     selector: 'app-cart',
@@ -20,13 +21,14 @@ export class CartComponent {
   constructor(
     private httpClient: HttpClient,
     private ingredientService: IngredientsService,
-    private router: Router
+    private router: Router,
+    private cartService: CartService
   ) {
     this.ingredients = this.ingredientService.ingredients;
   }
 
   ngOnInit(): void {
-    this.httpClient.get("http://localhost:3000/cart/items").subscribe(
+    this.cartService.getCartItems().subscribe(
       (response: any) => {
         const data = response as any[];
         this.items = data.map(item => ({
@@ -71,7 +73,7 @@ export class CartComponent {
   }
 
   removeItem(item: any) {
-    this.httpClient.delete("http://localhost:3000/cart/delete-item/" + item._id).subscribe(
+    this.cartService.removeCartItem(item._id).subscribe(
       (response: any) => {
         this.items = this.items.filter(i => i._id !== item._id);
       }
@@ -92,7 +94,7 @@ export class CartComponent {
    */
   placeOrder() {
     // clear backend cart
-    this.httpClient.delete('http://localhost:3000/cart/clear').subscribe(
+    this.cartService.clearCart().subscribe(
       () => {
         // reset frontend state
         this.items = [];
